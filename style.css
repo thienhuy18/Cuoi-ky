@@ -203,7 +203,7 @@ img {
 .grid-container {
   
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(1, 1fr);
   gap: 8px;
 }
@@ -214,6 +214,7 @@ img {
   background-color: #e6ba8c;
   padding: 15px;
   text-align: center;
+  margin:auto;
 
 }
 
@@ -239,6 +240,16 @@ img {
   color: rgb(255, 52, 52)
 }
 
+.reaction-form .fa-heart {
+  color: white;
+}
 .reaction-form .fa-heart-crack:hover {
   color: darkred
+}
+.reaction-form .fa-download:hover{
+  color:#8ce68c
+}
+.reaction-form button {
+  background-color: #e6ba8c;
+  border:0px solid
 }
