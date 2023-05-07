@@ -1,23 +1,24 @@
 $(document).ready(function() {
-	$('#display-link').click(function(event) {
-	  event.preventDefault(); // prevent the default link behavior
+
+	$('.add-song').click(function(event) {
+	  event.preventDefault(); 
+  
+	  const parentDiv = $(this).closest('.item');
+  
+	  const h3Element = parentDiv.find('h3');
+  
+	  const songName = h3Element.text();
+  
 	  $.ajax({
-		url: 'fetch_artists.php',
-		type: 'GET',
-		dataType: 'json',
-		success: function(data) {
-		  // data is an array of artist objects, each containing an id and name
-		  var html = '<ul>';
-		  $.each(data, function(index, artist) {
-			html += '<li>' + artist.name + '</li>';
-		  });
-		  html += '</ul>';
-		  $('#artist-list').html(html);
+		url: 'addsongtoplaylist.php',
+		method: 'POST',
+		data: { songName: songName },
+		success: function(response) {
+		  console.log(response); 
 		},
 		error: function(xhr, status, error) {
-		  console.log('Error:', error);
+		  console.log(error); 
 		}
 	  });
 	});
   });
-  
