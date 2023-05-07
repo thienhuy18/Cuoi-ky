@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 07, 2023 lúc 11:58 AM
+-- Thời gian đã tạo: Th5 07, 2023 lúc 03:47 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.0.25
 
@@ -109,6 +109,34 @@ CREATE TABLE `song` (
   `songImg` varchar(100) NOT NULL,
   `singer` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `songs`
+--
+
+CREATE TABLE `songs` (
+  `name` varchar(50) NOT NULL,
+  `singer` varchar(50) NOT NULL,
+  `genres` varchar(50) NOT NULL,
+  `url` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `songs`
+--
+
+INSERT INTO `songs` (`name`, `singer`, `genres`, `url`) VALUES
+('Ngủ Một Mình', 'HIEUTHUHAI', 'Rap', 'songs/NguMotMinh-HIEUTHUHAINegavKewtiie-8267763.mp3'),
+('Chúng Ta Của Hiện Tại', 'Sơn Tùng M-TP', 'Pop', 'songs/Chung Ta Cua Hien Tai - Son Tung M-TP.mp3'),
+('Die For You', 'The Weeknd', 'Pop', 'songs/Die For You (Remix)(audiosong.in).mp3'),
+('SICKO MODE', 'Travis Scott', 'Rap', 'songs/Travis_Scott_Ft_Drake_-_Sicko_Mode_Amebo9ja.com.mp3'),
+('Waiting For You', 'MONO', 'Pop', 'songs/Waiting For You - MONO_ Onionn.mp3'),
+('Tiny Love', 'Thịnh Suy', 'Indie', 'songs/tiny love - Thinh Suy - NhacHay360.mp3'),
+('Paris In The Rain', 'Lauv', 'Indie', 'songs/Lauv Paris In The Rain Lyric Video.mp3'),
+('HUMBLE', 'Kendrick Lamar', 'Rap', 'songs/Kendrick-Lamar-HUMBLE..mp3'),
+('Industry Baby', 'Lil Nas X', 'Rap', 'songs/Lil-Nas-X-Ft-Jack-Harlow-Industry-Baby-(TrendyBeatz.com).mp3');
 
 -- --------------------------------------------------------
 
