@@ -253,3 +253,6 @@ img {
   background-color: #e6ba8c;
   border:0px solid
 }
+.reaction-form .fa-ellipsis:hover {
+  color: rgb(32, 149, 191)
+}
