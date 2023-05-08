@@ -4,5 +4,5 @@
     $_SESSION = array();
 
     echo "<script>alert('Log out successfully, redirecting to homepage.')</script>";
-    header('refresh:1;url=/cuoiki/index.html')
+    header('location:index.html')
 ?>

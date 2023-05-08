@@ -25,7 +25,7 @@
     if($result->num_rows > 0) {
       $error = '';
       $_SESSION['email'] = $email;
-      header("refresh:0.5;url=/cuoiki/homepage.php");
+      header('Location: homepage.php');
       
       
     } else {

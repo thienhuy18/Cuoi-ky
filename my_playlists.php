@@ -1,8 +1,17 @@
 <?php 
     session_start();
-
-    $song_id = $_GET['song_id'];
-
+    if(!isset($_SESSION['email'])) {
+      echo "<script>alert('You need to login to continue')</script>";
+      header("Location:login.php");
+      die();
+    }
+    $song_id = '';
+    if(!empty($_POST['songTitle'])) {
+      $song_id = $_POST['songTitle'];
+    }
+    if(isset($_GET['songTitle'])){
+      $_SESSION['songTitle'] = $_GET['songTitle'];
+    }
 
 ?>
 
@@ -29,16 +38,14 @@
         <div class="menu-container">
           <ul class="menu-list">
             <li class="menu-items"><a href="homepage.php">Home</a></li>
-            <li class="menu-items"><a href="genres.php">Genres</a></li>
+            <li class="menu-items"><a href="genres1.php">Genres</a></li>
             <li class="menu-items"><a href="artists.php" id="display-link">Artists</a></li>
-            <li class="menu-items active"><a href="playlists.php">Playlists</a></li>
-            <li class="menu-items"><a href="albums.php">Albums</a></li>
-
+            <li class="menu-items active"><a href="my_playlists.php">Playlists</a></li>            
           </ul>
         </div>
         <div class="profile-container">
           <div class="profile">
-
+            
             <div class="avatar" style="text-align: center ">
               <i class="fa-solid fa-circle-user"></i>
             </div>
@@ -50,14 +57,14 @@
             <a href="logout.php">Log out</a>
           </div>
         </div>
-
+        
       </nav>
     </header>
 
     <main>
         <div class="container">
           <div class="playlist-list">
-
+            <form action="add_song_to_playlist.php" class="playlist-add" method="POST">
             <?php 
               require_once('database/database.php');
               $conn = get_connection();
@@ -68,30 +75,64 @@
               $stm->bind_result($count);
               $stm->fetch();
               // $count = $stm;
-
+              
               if($count > 0) {
-                $stm = $conn->prepare('SELECT * FROM playlists');
+                $stm = $conn->prepare('SELECT * FROM playlists group by name');
                 $stm->execute();
                 $result = $stm->get_result();
                 while($row=$result->fetch_assoc()) {
                   ?>
+                    <a class="playlist-link" href="addsongtoplaylist.php?name=<?php echo $row['name'] ?>">
 
-                      <form action="add_song_to_playlist.php" method="POST">
-                        <input type="button" value="<?php echo $row['name']?>">
-                        <button>add</button>
-                      </form>
+                    
+                      <div class="playlist-content">
+                        <div class="playlist-img">
+                          <img src="images/images.jpg" alt="">
+                        </div>
+                        <div class="playlist-name">
+                          <p><?php echo $row['name']?></p>
+                        </div>
+                        <div class="playlist-option">
+                        
+                          <?php 
+                            if(isset($_POST['songTitle'])) {
+                              ?>
+                                <input class="radio-input" type="radio" name="songTitle" value="<?php echo "$song_id"?>">
+                              <?php
+                            }
 
+                          ?>
+                          
+                        </div>
+                        
+                      </div>
+                    </a>
+          
 
                   <?php
-                }
-              }
-              else {
-                echo "<p>You have not had any playlist yet, <a href='create_playlist.php'>Create one</a></p>";
-              }
 
+                }
+                echo "<p><a href='create_playlist.php'>Create new playlist</a>...</p>";
+              }
+              
+              else {
+                echo "<p>You have not had any playlist yet, <a href='create_playlist.php'>Create one</a>...</p>";
+              }
             ?>
+              <?php 
+                if(isset($_GET['songTitle'])) {
+                  ?>
+                    <button>add song</button>
+                  <?php
+                }
+              ?>
+              
+            </form>
           </div>
         </div>
+        <script>
+            
+        </script>
     </main>
 </body>
 </html>

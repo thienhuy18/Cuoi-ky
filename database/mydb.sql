@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 07, 2023 lúc 03:47 PM
+-- Thời gian đã tạo: Th5 08, 2023 lúc 04:10 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.0.25
 
@@ -20,6 +20,37 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `mydb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `artist`
+--
+
+CREATE TABLE `artist` (
+  `artistId` int(11) NOT NULL,
+  `artistName` varchar(255) NOT NULL,
+  `artistImg` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `artist`
+--
+
+INSERT INTO `artist` (`artistId`, `artistName`, `artistImg`) VALUES
+(1, 'MCK', 'mck_DSDT.jpg'),
+(2, 'Hieuthuhai', 'channels4_profile.jpg'),
+(3, 'Mono', 'Mono-singer.jpg'),
+(4, 'Thịnh Suy', 'thinh-suy-chu-nhan-hit-mot-dem-say-20211206-dnplus-04.jpg'),
+(5, 'Sơn Tùng MTP', 'Son-Tung-MTP.jpg'),
+(6, 'Alan Walker', 'adc8d9dc-8afe-11ed-954e-0ecc81f4ee58-972x597.jpg'),
+(7, 'Hoaprox', 'hoaproxmv2020.jpg'),
+(8, 'The Weeknd', 'the-weeknd.jpg'),
+(9, 'Hayd', '1-1.png'),
+(10, 'Ed Sheeran', 'ed-sheeran.jpg'),
+(11, 'Lil Nas X', 'lil-nas-x.png'),
+(12, 'Obito', 'obito.jpeg'),
+(13, 'Travis Scott', 'travis.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,13 +101,39 @@ INSERT INTO `ellipsis` (`song`, `lyrics`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `liked_song`
+--
+
+CREATE TABLE `liked_song` (
+  `name` varchar(50) NOT NULL DEFAULT '',
+  `singer` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `liked_song`
+--
+
+INSERT INTO `liked_song` (`name`, `singer`) VALUES
+('Chìm Sâu', ''),
+('Chìm Sâu', ''),
+('Chìm Sâu', ''),
+('Chìm Sâu', ''),
+('Chìm Sâu', ''),
+('Waiting For You', ''),
+('Ngủ Một Mình', ''),
+('Chìm Sâu', ''),
+('Chìm Sâu', '');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `playlists`
 --
 
 CREATE TABLE `playlists` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `song` varchar(50) NOT NULL
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `song` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -84,18 +141,17 @@ CREATE TABLE `playlists` (
 --
 
 INSERT INTO `playlists` (`id`, `name`, `song`) VALUES
-(1, 'A', 'Chim Sau'),
-(3, 'C', 'Chim Sau'),
-(2, 'B', 'Chim Sau'),
-(0, 'A', 'Chim Sau'),
-(0, 'B', 'Chim Sau'),
-(0, 'D', 'Chim Sau'),
-(0, 'A', 'Chim Sau'),
-(0, 'Huy', 'Chim Sau'),
-(0, 'A', 'Chim Sau'),
-(0, 'C', 'Chim Sau'),
-(0, 'A', 'Ngủ Một Mình'),
-(0, 'A', 'Chìm Sâu');
+(73, 'Huy', ''),
+(84, 'Huy', ''),
+(85, 'Huy', 'Chúng Ta Của Hiện Tại'),
+(86, 'Khoa', ''),
+(87, 'Khoa', ''),
+(88, 'Khoa', 'Tiny Love'),
+(89, 'Huy', ''),
+(90, 'Khoa', ''),
+(91, 'Huy', 'Die For You'),
+(92, 'Huy', ''),
+(95, 'Huy', '');
 
 -- --------------------------------------------------------
 
@@ -104,11 +160,25 @@ INSERT INTO `playlists` (`id`, `name`, `song`) VALUES
 --
 
 CREATE TABLE `song` (
-  `songID` varchar(10) NOT NULL,
-  `songName` varchar(30) NOT NULL,
-  `songImg` varchar(100) NOT NULL,
-  `singer` varchar(100) NOT NULL
+  `songID` int(11) NOT NULL,
+  `songName` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `songLink` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `singer` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `genre` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `artistID` int(11) NOT NULL,
+  `songImg` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `song`
+--
+
+INSERT INTO `song` (`songID`, `songName`, `songLink`, `singer`, `genre`, `artistID`, `songImg`) VALUES
+(1, 'Chìm Sâu', 'ChimSau-MCKTrungTran-7205660.mp3', 'MCK', 'Rap/Top track', 1, 'chimsau.jpg'),
+(2, 'Ngủ Một Mình', 'NguMotMinh-HIEUTHUHAINegavKewtiie-8267763.mp3', 'Hieuthuhai', 'Rap/Top track', 2, 'ngu1m.jpg'),
+(3, 'Waiting For You', 'Waiting For You - MONO_ Onionn.mp3', 'MONO', 'Pop/Top track', 3, 'mono.jpg'),
+(4, 'Tiny Love', 'tiny love - Thinh Suy - NhacHay360.mp3', 'Thịnh Suy', 'Pop/Top track', 4, 'tiny.jpg'),
+(5, 'Chúng Ta Của Hiện Tại', 'Chung Ta Cua Hien Tai - Son Tung M-TP.mp3', 'Sơn Tùng M-TP', 'Pop/Ballad/Top track', 5, 'chungtacuahientai.jpg');
 
 -- --------------------------------------------------------
 
@@ -136,7 +206,8 @@ INSERT INTO `songs` (`name`, `singer`, `genres`, `url`) VALUES
 ('Tiny Love', 'Thịnh Suy', 'Indie', 'songs/tiny love - Thinh Suy - NhacHay360.mp3'),
 ('Paris In The Rain', 'Lauv', 'Indie', 'songs/Lauv Paris In The Rain Lyric Video.mp3'),
 ('HUMBLE', 'Kendrick Lamar', 'Rap', 'songs/Kendrick-Lamar-HUMBLE..mp3'),
-('Industry Baby', 'Lil Nas X', 'Rap', 'songs/Lil-Nas-X-Ft-Jack-Harlow-Industry-Baby-(TrendyBeatz.com).mp3');
+('Industry Baby', 'Lil Nas X', 'Rap', 'songs/Lil-Nas-X-Ft-Jack-Harlow-Industry-Baby-(TrendyBeatz.com).mp3'),
+('Chìm Sâu', 'MCK', 'Rap', 'songs/ChimSau-MCKTrungTran-7205660.mp3');
 
 -- --------------------------------------------------------
 
@@ -150,6 +221,59 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `email`, `password`) VALUES
+(0, 'admin', 'admin@gmail.com', 'admin123456'),
+(0, 'ThienHuy', 'thienhuy0108@gmail.com', 'abc123'),
+(0, 'ThienHuy1', '521h0072@student.tdtu.edu.vn', 'abc123');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `artist`
+--
+ALTER TABLE `artist`
+  ADD PRIMARY KEY (`artistId`);
+
+--
+-- Chỉ mục cho bảng `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `song`
+--
+ALTER TABLE `song`
+  ADD PRIMARY KEY (`songID`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `artist`
+--
+ALTER TABLE `artist`
+  MODIFY `artistId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT cho bảng `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT cho bảng `song`
+--
+ALTER TABLE `song`
+  MODIFY `songID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

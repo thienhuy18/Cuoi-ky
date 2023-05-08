@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+  }
+  
+  body {
+    
+    background-color: #8ce68c;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  header {
+    width: 100%;
+    position: fixed;
+    background-color: #333;
+    color: black;
+    padding: 0;
+    height: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    
+    
+  }
+  nav {
+    display: flex;
+    height: 100%;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+  } 
+  .logo-container {
+    flex: 2;
+    font-family: 'Sen', sans-serif;
+    /* text-align: center; */
+    /* border: 1px solid white; */
+    
+  }
+  .logo {
+    padding-left: 0;
+    margin-left: 15px;
+    font-style: italic;
+  }
+  .logo span {
+    color: #6ba4e6;
+  }
+  .menu-container {
+    flex: 6;
+  }
+  .menu-list {
+    display: flex;
+    list-style: none;
+  }
+  .menu-items {
+    
+    font-size: 18px;
+    /* border: 1px solid white; */
+    margin-right: 40px;
+    padding: 13px 16px;
+  }
+  .menu-items:hover {
+    background-color: #6a6868;
+  }
+  .menu-items.active {
+    border-bottom: 3px solid #6ba4e6;
+  }
+  .menu-items a {
+    color: white;
+    text-decoration: none;
+  }
+  .menu-list-items a:hover {
+    background-color: a6a6a6;
+  }
+  
+  .profile-container {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+    box-sizing: border-box;
+    margin-right: 10px;
+  }
+  
+  .profile {
+    margin-right: 0;
+    box-sizing: border-box;
+    margin-top: 10px;
+    
+  }
+  
+  .profile .avatar {
+    margin: auto;
+    text-align: center
+  }
+  
+  
+  .profile .avatar i {
+    text-align: center;
+    font-size: 22px;
+    color: white;
+  }
+  
+  .profile .user {
+    font-size: 15px;
+    text-align: center;
+    
+  }
+  
+  
+  .account-options {
+    justify-self: flex-end;
+    padding-left: 10px;
+  }
+  
+  .account-options a {
+    color: white;
+    font-weight: lighter;
+    font-size: 15px;
+    text-decoration: none;
+  }
+    
+  .account-options a:hover {
+    color: #6ba4e6;
+  }
+  
+  main {
+    padding:50px 20px;
+    
+  }
+  
+  .container {
+    padding-top: 30px;
+    
+  }
+  
+  .playlist-list {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .playlist-add {
+    height: 200px;
+    /* padding: 50px; */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    /* margin-top: 10px; */
+    /* border: 1px solid black; */
+    
+    
+    width: 100%;
+    
+  }
+  
+  
+  
+  .playlist-content .playlist-name {
+    margin-left: 10px;
+  }
+  
+  .playlist-name p {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .playlist-add .playlist-content {
+    margin: 10px 5px;
+    padding: 10px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    background-color: #333;
+  }
+  
+  .playlist-add .playlist-content:hover {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    border-radius: 10px;
+  }
+  
+  
+  
+  .playlist-content .playlist-img {
+    margin-top: 15px;
+  }
+  
+  .playlist-content .playlist-img img {
+    width: 150px;
+    
+  }
+  
+  
+  
+  .playlist-option {
+    margin-top: 15px;
+  }
+  
+  .playlist-option input[type="radio"] {
+    transform: scale(1.4);
+  }
+  
+  .playlist-add button {
+    
+    margin-top: 50px;
+    padding: 8px;
+    border: none;
+    background-color: white;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    border-radius: 10px;
+  }
+  
+  .playlist-add button:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  }
+  .playlist-link {
+    text-decoration: none;
+    margin-right: 20px;
+  }
+  
+  
+  
+  
+  
+  
+    
